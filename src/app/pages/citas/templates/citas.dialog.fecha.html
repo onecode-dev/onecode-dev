@@ -1,0 +1,114 @@
+<div class="row mt4">
+    <div class="col-xs-12">
+
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>Colaborador:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.colaborador.persona.persona || "---" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>Profesión:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.colaborador.profesion.profesion || "---" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>Móvil:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.colaborador.persona.celular || "---" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt4">
+    <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>Paciente:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.paciente.persona.persona || "---" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>CUI:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.paciente.persona.cui || "---" }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <div class="area-info">
+                <div class="mb2">
+                    <strong>Móvil:</strong>
+                </div>
+
+                <div class="mb2 ml8">
+                    <span>{{ ctrl.paciente.persona.celular || "---" }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row mh0 mt8 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Fecha (día, mes, año):</label>
+        <div class="row">
+            <div class="col-xs-3">
+                <select class="form-control" name="dias" ng-model="ctrl.fecha.dias" ng-options="option.value for option in ctrl.dias track by option.id"></select>
+            </div>
+            <div class="col-xs-5">
+                <select class="form-control" name="meses" ng-model="ctrl.fecha.meses" ng-options="option.value for option in ctrl.meses track by option.id"></select>
+            </div>
+            <div class="col-xs-4">
+                <select class="form-control" name="anios" ng-model="ctrl.fecha.anios" ng-options="option.value for option in ctrl.anios track by option.id"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-4">
+        <label>Horas y minutos:</label>
+        <div class="row">
+            <div class="col-xs-6">
+                <select class="form-control" name="hora" ng-model="ctrl.fecha.hora" ng-options="option.value for option in ctrl.horas track by option.id"></select>
+            </div>
+            <div class="col-xs-6">
+                <select class="form-control" name="minuto" ng-model="ctrl.fecha.minuto" ng-options="option.value for option in ctrl.minutos track by option.id"></select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 mt8 form-group">
+    <div class="col-xs-12">
+        <label>Descripción:</label>
+        <textarea rows="3" ng-model="ctrl.descripcion" class="form-control" placeholder="Escriba una descripción"></textarea>
+    </div>
+
+</div>

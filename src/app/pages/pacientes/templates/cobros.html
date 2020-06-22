@@ -1,0 +1,196 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="CobrosPacienteController as ctrl">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="rel">
+                            <!-- <mi-loader></mi-loader> -->
+
+                            <div class="panel popular-app animated zoomIn">
+                                <div class="popular-app-cost row">
+                                    <div class="col-xs-6 col-md-2">Paciente:</div>
+                                    <div class="col-xs-6 col-md-4">
+                                        <a ui-sref="pacientes_edit({ id: ctrl.paciente.id })" ng-if="ctrl.paciente.id">
+                                            <strong class="text-info">{{ ctrl.paciente.persona.persona || "---" }}</strong>
+                                        </a>
+                                        <strong ng-if="!ctrl.paciente.id">---</strong>
+                                    </div>
+                                    <div class="col-xs-6 col-md-4 text-right" ng-if="esAdmin || esSecretaria">Saldo actual:</div>
+                                    <div class="col-xs-6 col-md-2 text-right" ng-if="esAdmin || esSecretaria">
+                                        <strong>{{ (ctrl.paciente.saldo || 0) | currency: "Q " : 2 }}</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" style="padding-bottom: 17px">
+                        <button class="btn btn-money" ng-click="ctrl.registrarAbono()" ng-disabled="ctrl.loading" ng-if="esAdmin || esSecretaria">
+                            <span class="fa fa-fw fa-money" ></span>
+                            <strong>Registrar abono</strong>
+                        </button>
+                        <button class="btn btn-danger" ng-click="ctrl.registrarCobro()" ng-disabled="ctrl.loading">
+                            <span class="fa fa-fw fa-money" ></span>
+                            <strong>Registrar cobro</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <form autocomplete="off" ng-submit="ctrl.search()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar" ng-model="ctrl.pagination.search" ng-change="ctrl.search()">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <span class="fa fa-fw fa-search"></span>
+                                            <strong>Buscar</strong>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panel panel-default mb12">
+                    <div class="panel-body">
+                        <div class="input-demo radio-demo row">
+
+                            <span style="margin-right: 16px;">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.query.filterby" ng-change="ctrl.search()" ng-value="ctrl.query.pendientes">
+                                    <span>Pendientes</span>
+                                </label>
+                            </span>
+                            <span style="margin-right: 16px;">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.query.filterby" ng-change="ctrl.search()" ng-value="ctrl.query.pagados">
+                                    <span>Pagados</span>
+                                </label>
+                            </span>
+                            <span style="margin-right: 16px;">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.query.filterby" ng-change="ctrl.search()" ng-value="ctrl.query.anulados">
+                                    <span>Anulados</span>
+                                </label>
+                            </span>
+                            <span style="margin-right: 16px;">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.query.filterby" ng-change="ctrl.search()" ng-value="ctrl.query.todas">
+                                    <span>Todos</span>
+                                </label>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="mb16 rel">
+
+                            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                            <div class="panel panel-primary animated zoomIn">
+                                <div class="panel-heading">
+                                    <strong>Listado de abonos y cobros asociados al paciente</strong>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:150px;">Fecha y hora</th>
+                                                <!--<th style="width:100px;">Hora</th>-->
+                                                <th>Colaborador</th>
+                                                <th style="min-width:220px;">Motivo</th>
+                                                <th style="width:120px;">Tipo</th>
+                                                <th class="text-left" style="width:120px;">Monto</th>
+                                                <th style="width:120px;">Estado</th>
+                                                <th class="text-right">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in ctrl.array">
+                                                <td>{{ item.fecha_creacion | date: "dd/MMMM/yyyy HH:mm" }}</td>
+                                                <!--<td>{{ item.fecha_creacion | date: "hh:mm a" }}</td>-->
+                                                <td>{{ item.colaborador.persona.persona || "---" }}</td>
+                                                <td>{{ item.motivo || "---" }}</td>
+                                                <td>
+                                                    <strong class="text-danger" ng-if="item.tipo == 10">COBRO</strong>
+
+                                                    <strong class="text-success" ng-if="item.tipo == 20">ABONO</strong>
+                                                </td>
+                                                <td class="text-left">
+                                                    <strong>{{ item.monto | currency: "Q " : 2 }}</strong>
+                                                </td>
+                                                <td>
+                                                    <!-- <span style="font-size: 18px;" class="text-success fa fa-fw fa-arrow-up " ng-if="item.tipo == 10"></span> -->
+                                                    <strong class="text-success" ng-if="item.pagado">PAGADO</strong>
+
+                                                    <!-- <span style="font-size: 18px;" class="text-danger fa fa-fw fa-arrow-down " ng-if="item.tipo == 20"></span> -->
+                                                    <strong class="text-warning" ng-if="!item.pagado && !item.anulado">PENDIENTE DE PAGO</strong>
+
+                                                    <strong class="text-danger" ng-if="item.anulado">ANULADO</strong>
+                                                </td>
+                                                <td class="text-right" style="width:140px; text-align: right !important;">
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-money" ng-click="ctrl.realizarCobro(item)" title="Realizar cobro" ng-if="(esAdmin || esSecretaria) && (item.tipo == 10)" ng-disabled="item.anulado || item.pagado || !user.id">
+                                                            <span class="fa fa-money"></span>
+                                                        </button>
+                                                        <button class="btn btn-danger" ng-click="ctrl.anularCobro(item)" title="Anular" ng-disabled="item.anulado || item.pagado">
+                                                            <span class="fa fa-ban"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.pagination.total_items' ng-model='ctrl.pagination.current_page' max-size='ctrl.pagination.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed()">
+                            </div>
+                        </div>
+
+                        <!--<pre>Página {{ ctrl.current_page || "--" }} / {{ ctrl.num_pages || "--" }} </pre>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+                <!--<li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li>-->
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

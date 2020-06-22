@@ -1,0 +1,238 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+
+    <div class="col-md-12">
+
+        <form ng-submit="ctrl.save()">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <strong>Cierre del caso</strong>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>No. de sesiones:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.sesiones }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Fecha de inicio:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.caso.fecha_creacion | date: 'dd/MMMM/yyyy' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Fecha de culminación:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span ng-if="ctrl.caso.cerrado">{{ ctrl.caso.fecha_cierre | date: 'dd/MMMM/yyyy' }}</span>
+                                        <span ng-if="!ctrl.caso.cerrado">{{ ctrl.fecha | date: 'dd/MMMM/yyyy' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Nombre:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.caso.paciente.persona.persona || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Fecha de nacimiento:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.caso.paciente.fecha_nacimiento | date : 'dd/MMMM/yyyy' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Edad:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.edad || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Motivo de la consulta:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.caso.motivo || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-if="!ctrl.caso.cerrado">
+                            <div class="col-xs-12">
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Diagnóstico:</label>
+                                        <textarea name="diagnostico" ng-model="ctrl.caso.diagnostico" class="form-control" placeholder="Usar clasificación del DSM-IV">
+                                        </textarea>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Plan terapéutico:</label>
+                                        <textarea name="plan_terapeutico" ng-model="ctrl.caso.plan_terapeutico" class="form-control" placeholder="Plan terapéutico.">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Instrumentos utilizados:</label>
+                                        <textarea name="instrumentos" ng-model="ctrl.caso.instrumentos" class="form-control" placeholder="Instrumentos utilizados.">
+                                        </textarea>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Resultados:</label>
+                                        <textarea name="resultados" ng-model="ctrl.caso.resultados" class="form-control" placeholder="Resultados.">
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Pronóstico:</label>
+                                        <textarea name="pronostico" ng-model="ctrl.caso.pronostico" class="form-control" placeholder="Pronóstico.">
+                                        </textarea>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <label>Observaciones:</label>
+                                        <textarea name="observaciones" ng-model="ctrl.caso.observaciones" class="form-control" placeholder="Observaciones.">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-if="ctrl.caso.cerrado">
+                            <div class="col-xs-12">
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Diagnóstico:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.diagnostico || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Plan terapéutico:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.plan_terapeutico || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Instrumentos utilizados:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.instrumentos || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Resultados:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.resultados || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mh0 form-group">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Pronóstico:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.pronostico || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                        <div class="area-info">
+                                            <div class="mb2">
+                                                <strong>Observaciones:</strong>
+                                            </div>
+                                            <div class="mb2 ml8">
+                                                <span>{{ ctrl.caso.observaciones || "---" }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="panel-footer text-center">
+
+                    <button class="btn btn-danger" ng-click="closeThisDialog(0)" type="button" ng-if="!ctrl.caso.cerrado">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit" ng-if="!ctrl.caso.cerrado">
+                        <span class="fa fa-fw fa-folder"></span>
+                        <strong>Cerrar caso</strong>
+                    </button>
+
+                    <a href="/api/casos/pdf_cierre_caso/?id={{ ctrl.caso.id }}" target="_blank" class="btn btn-danger" type="button" ng-if="ctrl.caso.cerrado">
+                        <span class="fa fa-fw fa-download"></span>
+                        <strong>Descargar en PDF</strong>
+                    </a>
+                    <button class="btn btn-success" ng-click="ctrl.abrirCaso()" type="button" ng-if="ctrl.caso.cerrado">
+                        <span class="fa fa-fw fa-folder-open"></span>
+                        <strong>Abrir caso</strong>
+                    </button>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>

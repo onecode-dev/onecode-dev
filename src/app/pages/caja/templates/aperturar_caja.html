@@ -1,0 +1,50 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>
+                <strong>Aperturar caja</strong>
+            </h2>
+        </div>
+
+        <div class="col-xs-12">
+            <form autocomplete="off" name="ctrl.form" novalidate="" ng-submit="ctrl.save()">
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group" style="margin-bottom: 0px !important;">
+                            <label>Cierre anterior:</label>
+                            <br>
+                            <label class="label-input">
+                                <strong>{{ (cierre_anterior || 0) | currency : "Q " : 2 }}</strong>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <label>Efectivo de apertura (Caja):</label>
+                            <span class="text-danger field-required">*</span>
+                            <div class="input-group">
+                                <span class="input-group-addon addon-left input-group-addon-success">Q</span>
+                                <input class="form-control with-success-addon" type="number" placeholder="0.00" autofocus="" step="1" ng-model="ctrl.total_apertura_form">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="padding-top: 16px;">
+                    <button class="btn btn-danger" type="button" ng-click="closeThisDialog()">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit">
+                        <span class="fa fa-fw fa-check"></span>
+                        <strong>Aperturar caja</strong>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

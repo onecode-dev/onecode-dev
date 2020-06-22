@@ -1,0 +1,68 @@
+<div>
+        <ba-sidebar></ba-sidebar>
+        <page-top></page-top>
+    
+        <div class="al-main">
+            <div class="al-content">
+                <content-top></content-top>
+    
+                <!-- BEGIN CUSTOM HTML -->
+                <div ng-controller="PacientesEditController as ctrl">
+    
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="rel">
+                                <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                                <div>
+                                    <form name="ctrl.form" autocomplete="off" ng-submit="ctrl.save()" novalidate>
+                                        <div class="panel panel-primary animated zoomIn">
+            
+                                            <div class="panel-heading">
+                                                <strong>Información personal</strong>
+                                            </div>
+            
+                                            <div class="panel-body">
+            
+                                                <div class="row">
+                                                    <div ng-include="'app/pages/pacientes/templates/form.html'"></div>
+                                                </div>
+            
+                                            </div>
+                                            <div class="panel-footer text-center">
+                                                <button class="btn btn-danger" ui-sref="pacientes()" type="button">
+                                                    <span class="fa fa-fw fa-times-circle"></span>
+                                                    <strong>Cancelar</strong>
+                                                </button>
+                                                <button class="btn btn-success" type="submit">
+                                                    <span class="fa fa-fw fa-pencil"></span>
+                                                    <strong>Editar</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                <!-- END CUSTOM HTML -->
+    
+            </div>
+        </div>
+    
+        <footer class="al-footer clearfix">
+            <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+            <div class="al-footer-main clearfix">
+                <div class="al-copy">
+                    <span style="font-size:14px;">La Fundación Talita Kum</span>
+                </div>
+                <ul class="al-share clearfix">
+                </ul>
+            </div>
+        </footer>
+    
+        <!--<back-top></back-top>-->
+    </div>
+    

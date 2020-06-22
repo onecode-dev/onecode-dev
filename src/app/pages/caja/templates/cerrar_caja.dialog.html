@@ -1,0 +1,112 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>
+                <strong>Cierre de caja</strong>
+            </h2>
+        </div>
+
+        <div class="col-xs-12">
+
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Colaborador que manejó la caja:</label>
+                        <br>
+                        <label class="label-input">
+                            <span>{{ apertura_cierre_caja_info.colaborador.persona.persona }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Fecha de apertura:</label>
+                        <br>
+                        <label class="label-input">
+                            <span>{{ apertura_cierre_caja_info.fecha_creacion | date : "dd/MMM/yyyy hh:mm a" }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Fecha de cierre:</label>
+                        <br>
+                        <label class="label-input">
+                            <span>{{ apertura_cierre_caja_info.fecha_cierre | date : "dd/MMM/yyyy hh:mm a" }}</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Monto inicial:</label>
+                        <br>
+                        <label class="label-input">
+                            <strong>{{ apertura_cierre_caja_info.total_apertura | currency : "Q " : 2 }}</strong>
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Ingresos:</label>
+                        <br>
+                        <label class="label-input">
+                            <strong class="text-success">{{ ingresos_egresos_info.ingresos | currency : "Q " : 2 }}</strong>
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Egresos:</label>
+                        <br>
+                        <label class="label-input">
+                            <strong class="text-danger">{{ (ingresos_egresos_info.egresos * -1) | currency : "Q " : 2 }}</strong>
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0px !important;">
+                        <label>Efectivo (sistema):</label>
+                        <br>
+                        <label class="label-input">
+                            <strong>{{ apertura_cierre_caja_info.total_actual | currency : "Q " : 2 }}</strong>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Efectivo (Caja):</label>
+                        <label class="label-input">
+                            <strong>{{ apertura_cierre_caja_info.total_cierre | currency : "Q " : 2 }}</strong>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notas:</label>
+                        <label class="label-input" style="min-height: 167px">
+                            <span>{{ apertura_cierre_caja_info.notas || "---" }}</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div>
+                        <a href="/api/aperturas_cierres_caja/pdf_estado_cuenta_caja/?id={{ apertura_cierre_caja_info.id }}" target="_blank" class="btn btn-success" title="Estado de cuenta de caja">
+                            <span class="fa fa-fw fa-file-text"></span>
+                            <strong>Estado de cuenta</strong>
+                        </a>
+                        <a href="/api/aperturas_cierres_caja/pdf_cierre_caja/?id={{ apertura_cierre_caja_info.id }}" target="_blank" class="btn btn-danger" title="Informe de cierre de caja">
+                            <span class="fa fa-fw fa-print"></span>
+                            <strong>Boleta de cierre</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

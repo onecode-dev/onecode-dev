@@ -1,0 +1,191 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+
+    <div class="col-md-12">
+
+        <form>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <strong>Nota evolutiva No. {{ ctrl.nota.id }}</strong>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Fecha:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.fecha_creacion | date: 'dd/MMM/yyyy' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Nombre:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.caso.paciente.persona.persona || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Móvil:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.caso.paciente.persona.celular || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Motivo de la consulta:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.caso.motivo || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Varió:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.vario || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Tarea anterior:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.tarea_anterior || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Avance terapéutico:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.avance_terapeutico || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Eventos relevantes de la semana:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.eventos_relevantes || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Comentario significativo del paciente:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.comentario_paciente || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Tarea para la próxima sesión:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.tarea_proxima || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Observaciones:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.observaciones || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <div class="area-info">
+                                    <div class="mb2">
+                                        <strong>Notas:</strong>
+                                    </div>
+                                    <div class="mb2 ml8">
+                                        <span>{{ ctrl.nota.notas || "---" }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mh0 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading text-center">
+                                        <strong>Evolución de síntomas.</strong>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="text-align: center !important; width: 50%;">Psicológicos</th>
+                                                    <th style="text-align: center !important; width: 50%;">Físicos</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <span>{{ ctrl.nota.evolucion_psicologica }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ ctrl.nota.evolucion_fisica }}</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>

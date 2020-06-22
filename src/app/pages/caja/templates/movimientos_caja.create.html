@@ -1,0 +1,91 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>
+                <strong>Registrar movimiento</strong>
+            </h2>
+        </div>
+
+        <div class="col-xs-12">
+            <form autocomplete="off" name="ctrl.form" novalidate="" ng-submit="ctrl.save()">
+
+                <div class="form-group">
+                    <label>Cantidad:</label>
+                    <span class="text-danger field-required">*</span>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-left input-group-addon-success">Q</span>
+                        <input class="form-control with-success-addon" type="number" placeholder="0.00" autofocus="" step="1" min="0" ng-disabled="!ctrl.activar_cantidad" ng-model="ctrl.movimiento_caja.cantidad">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de movimiento:</label>
+                    <span class="text-danger field-required">*</span>
+                    <div class="input-demo radio-demo">
+                        <div class="col-xs-12" style="margin-bottom: 8px;background-color: #FFF;border-radius: 4px;border: 1px solid #ccc; padding-top: 4px; padding-bottom: 4px;">
+                            <div class="col-xs-6">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.movimiento_caja.tipo" ng-change="ctrl.changeType()" ng-value="10">
+                                    <span>Ingreso</span>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.movimiento_caja.tipo" ng-change="ctrl.changeType()" ng-disabled="!ctrl.activar_egreso" ng-value="20">
+                                    <span>Egreso</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de documento:</label>
+                    <div class="input-demo radio-demo">
+                        <div class="col-xs-12" style="margin-bottom: 8px;background-color: #FFF;border-radius: 4px;border: 1px solid #ccc; padding-top: 4px; padding-bottom: 4px;">
+                            <div class="col-xs-6">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-model="ctrl.movimiento_caja.tipo_documento" ng-value="10">
+                                    <span>Recibo</span>
+                                </label>
+                            </div>
+                            <div class="col-xs-6">
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" ng-disabled="ctrl.movimiento_caja.tipo != 20" ng-model="ctrl.movimiento_caja.tipo_documento" ng-value="20">
+                                    <span>Factura</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>No. de documento:</label>
+                    <div class="input-group">
+                        <span class="input-group-addon addon-left input-group-addon-success">#</span>
+                        <input ng-disabled="!ctrl.movimiento_caja.tipo_documento" class="form-control with-success-addon" type="text" placeholder="No. de documento" ng-model="ctrl.movimiento_caja.num_documento">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Concepto:</label>
+                    <span class="text-danger field-required">*</span>
+                    <textarea class="form-control" placeholder="Concepto del movimiento" name="concepto" ng-model="ctrl.movimiento_caja.concepto">
+                    </textarea>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-danger" type="button" ng-click="closeThisDialog()">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit">
+                        <span class="fa fa-fw fa-check"></span>
+                        <strong>Guardar</strong>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

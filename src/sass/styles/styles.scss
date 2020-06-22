@@ -1,0 +1,31 @@
+.panel-heading-img {
+    height: 100% !important;
+}
+.img-panel {
+    width: 100% !important;
+}
+.pt-24 {
+    padding-top: 24px !important;
+}
+.ph-16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.panel-footer {
+    font-size: 14px !important;
+}
+.icon-input {
+    position: absolute;
+    left: 0;
+    top: 9px;
+    text-align: center;
+    width: 42px;
+    //height: 42px;
+    font-size: 16px;
+}
+.div-input-icon {
+    position: relative;
+    input {
+        padding-left: 42px;
+    }
+}

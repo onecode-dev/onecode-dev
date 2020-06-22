@@ -1,0 +1,23 @@
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Nombre completo:</label><span class="text-danger field-required">*</span>
+        <input type="text" autofocus="" name="persona" ng-model="ctrl.paciente.persona.persona" class="form-control" placeholder="Nombre completo" required="">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>No. de DPI (CUI):</label>
+        <input type="text" name="cui" ng-model="ctrl.paciente.persona.cui" class="form-control" ui-mask="9999-99999-9999">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" ng-model="ctrl.paciente.persona.telefono" class="form-control" ui-mask="9999-9999">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Móvil:</label>
+        <input type="text" name="celular" ng-model="ctrl.paciente.persona.celular" class="form-control" ui-mask="9999-9999">
+    </div>
+</div>

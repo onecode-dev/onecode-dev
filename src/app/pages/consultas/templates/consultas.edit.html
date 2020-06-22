@@ -1,0 +1,110 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="ConsultaEditController as ctrl">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form name="ctrl.form" autocomplete="off" ng-submit="ctrl.save()" novalidate>
+                            <div class="panel panel-primary animated zoomIn">
+
+                                <div class="panel-body">
+
+                                    <!-- INFORMACIÓN GENERAL DEL PACIENTE -->
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading secondary-btn" ng-click="ctrl.panelPacienteOculto = ctrl.showPanel(ctrl.panelPacienteOculto)">
+                                            <strong>1. Información personal del paciente</strong>
+                                            <span title="Contraer" ng-if="!ctrl.panelPacienteOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+                                            <span title="Expandir" ng-if="ctrl.panelPacienteOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+                                        </div>
+
+                                        <div class="panel-body" ng-show="ctrl.panelPacienteOculto">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                                    <div class="area-info">
+                                                        <div class="mb2">
+                                                            <strong>Nombre completo:</strong>
+                                                        </div>
+                                                        <div class="mb6 mt10 ml8">
+                                                            <span>{{ ctrl.paciente.persona.persona || "---" }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                                    <div class="area-info">
+                                                        <div class="mb2">
+                                                            <strong>CUI:</strong>
+                                                        </div>
+                                                        <div class="mb6 mt10 ml8">
+                                                            <span>{{ ctrl.paciente.persona.cui || "---" }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                                    <div class="area-info">
+                                                        <div class="mb2">
+                                                            <strong>Móvil:</strong>
+                                                        </div>
+                                                        <div class="mb6 mt10 ml8">
+                                                            <span>{{ ctrl.paciente.persona.celular || "---" }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body" ng-if="!ctrl.panelPacienteOculto">
+                                            <div class="row">
+                                                <div ng-include="'app/pages/pacientes/templates/form.html'"></div>
+                                                <div class="col-xs-12 text-center">
+                                                    <span ng-click="ctrl.panelPacienteOculto = ctrl.showPanel(ctrl.panelPacienteOculto)" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- PERFIL SOCIAL DEL PACIENTE -->
+                                    <div ng-include="'app/pages/consultas/templates/form.html'"></div>
+
+                                </div>
+
+                                <div class="panel-footer text-center">
+                                    <button class="btn btn-danger" ui-sref="consultas()" type="button">
+                                        <span class="fa fa-fw fa-times-circle"></span>
+                                        <strong>Cancelar</strong>
+                                    </button>
+                                    <button class="btn btn-success" type="submit">
+                                        <span class="fa fa-fw fa-plus"></span>
+                                        <strong>Guardar</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

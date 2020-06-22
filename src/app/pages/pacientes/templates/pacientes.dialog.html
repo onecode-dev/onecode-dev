@@ -1,0 +1,250 @@
+<div class="row" style="font-size: 14px;">
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <div>
+            <span>Foto:</span>
+
+            <div class="text-center img-container img-dialog">
+                <div ng-if="!ctrl.paciente.persona.foto">
+                    <span class="fa fa-user-circle-o fa-5x" style="font-size: 120px;"></span>
+                </div>
+
+                <a href ng-if="ctrl.paciente.persona.foto" ng-click="ctrl.viewImg()">
+                    <img style="height: 100%; border-radius: 4%;" ngf-src="ctrl.paciente.persona.foto" />
+                </a>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Nombre completo:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.persona || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Apellido de casada:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.apellido_casada || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Teléfono:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.telefono || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Móvil:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.celular || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Nombres y edades de los padres:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.nombres_padres || "---" }}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Correo electrónico:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.correo || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>CUI:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.cui || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Nacionalidad:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.nacionalidad || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Departamento:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.departamento || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Dirección:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.persona.direccion || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Fecha de nacimiento:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <!-- <span>{{ (ctrl.paciente.nacimiento | date: 'dd/MM/yyyy') || "---" }}</span> -->
+                <span ng-if="ctrl.paciente.fecha_nacimiento">{{ ctrl.paciente.fecha_nacimiento | date: 'dd/MMMM/yyyy' }}</span>
+                <span ng-if="!ctrl.paciente.fecha_nacimiento">---</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Género:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.genero || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Ocupación de los padres:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.ocupacion_padres || "---" }}</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Tipo de sangre:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.tipo_de_sangre || "---" }}</span>
+            </div>
+        </div>
+
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Religión:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.religion || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Número de hermanos:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.num_hermanos || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Nivel académico:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.nivel_academico || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Ocupación:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.ocupacion || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Contacto de referencia:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.contacto_referencia || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Teléfono de referencia:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.telefono_referencia || "---" }}</span>
+            </div>
+        </div>
+
+        <div class="area-info">
+            <div class="mb2">
+                <strong>Información relevante de los padres:</strong>
+            </div>
+
+            <div class="mb2 ml8">
+                <span>{{ ctrl.paciente.info_padres || "---" }}</span>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-center" style="margin-top: 16px;">
+        <button class="btn btn-success" ng-click="ctrl.create()">
+            <span class="fa fa-fw fa-clock-o"></span>
+            <strong>Reservar cita</strong>
+        </button>
+    </div>
+</div>

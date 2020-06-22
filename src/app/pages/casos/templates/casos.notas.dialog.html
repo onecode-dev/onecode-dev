@@ -1,0 +1,179 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+
+    <div class="col-md-12">
+
+        <div class="rel">
+            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+            <form ng-submit="ctrl.save()">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <strong>Agregar nueva nota evolutiva. Sesión No. {{ ctrl.nota.num_sesion }}</strong>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row">
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="area-info">
+                                        <div class="mb2">
+                                            <strong>No. de sesión:</strong>
+                                        </div>
+                                        <div class="mb2 ml8">
+                                            <span>{{ ctrl.nota.num_sesion }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="area-info">
+                                        <div class="mb2">
+                                            <strong>Fecha:</strong>
+                                        </div>
+                                        <div class="mb2 ml8">
+                                            <span>{{ ctrl.fecha | date: 'dd/MMM/yyyy' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="area-info">
+                                        <div class="mb2">
+                                            <strong>Nombre:</strong>
+                                        </div>
+                                        <div class="mb2 ml8">
+                                            <span>{{ ctrl.caso.paciente.persona.persona || "---" }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-3">
+                                    <div class="area-info">
+                                        <div class="mb2">
+                                            <strong>Móvil:</strong>
+                                        </div>
+                                        <div class="mb2 ml8">
+                                            <span>{{ ctrl.caso.paciente.persona.celular || "---" }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="area-info">
+                                        <div class="mb2">
+                                            <strong>Motivo de la consulta:</strong>
+                                        </div>
+                                        <div class="mb2 ml8">
+                                            <span>{{ ctrl.caso.motivo || "---" }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Varió:</label>
+                                    <textarea name="vario" ng-model="ctrl.nota.vario" class="form-control" placeholder="Varió.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Tarea anterior:</label>
+                                    <textarea name="tarea_anterior" ng-model="ctrl.nota.tarea_anterior" class="form-control" placeholder="Tarea anterior.">
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Avance terapéutico:</label>
+                                    <textarea name="avance_terapeutico" ng-model="ctrl.nota.avance_terapeutico" class="form-control" placeholder="Avance terapéutico.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Eventos relevantes de la semana:</label>
+                                    <textarea name="eventos_relevantes" ng-model="ctrl.nota.eventos_relevantes" class="form-control" placeholder="Eventos relevantes de la semana.">
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Comentario significativo del paciente:</label>
+                                    <textarea name="comentario_paciente" ng-model="ctrl.nota.comentario_paciente" class="form-control" placeholder="Comentario significativo del paciente.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Tarea para la próxima sesión:</label>
+                                    <textarea name="tarea_proxima" ng-model="ctrl.nota.tarea_proxima" class="form-control" placeholder="Tarea para la próxima sesión.">
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Observaciones:</label>
+                                    <textarea name="observaciones" ng-model="ctrl.nota.observaciones" class="form-control" placeholder="Observaciones.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <label>Notas:</label>
+                                    <textarea name="notas" ng-model="ctrl.nota.notas" class="form-control" placeholder="Notas.">
+                                    </textarea>
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading text-center">
+                                            <strong>Evolución de síntomas.</strong>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="text-align: center !important; width: 50%;">Psicológicos</th>
+                                                        <th style="text-align: center !important; width: 50%;">Físicos</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <textarea name="evolucion_psicologica" ng-model="ctrl.nota.evolucion_psicologica" class="form-control" placeholder="Evolución psicológica.">
+                                                            </textarea>
+                                                        </td>
+                                                        <td>
+                                                            <textarea name="evolucion_fisica" ng-model="ctrl.nota.evolucion_fisica" class="form-control" placeholder="Evolución física.">
+                                                            </textarea>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="panel-footer text-center">
+                        <button class="btn btn-danger" ng-click="closeThisDialog(0)" type="button">
+                            <span class="fa fa-fw fa-times-circle"></span>
+                            <strong>Cancelar</strong>
+                        </button>
+                        <button class="btn btn-success" type="submit">
+                            <span class="fa fa-fw fa-plus"></span>
+                            <strong>Guardar</strong>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>

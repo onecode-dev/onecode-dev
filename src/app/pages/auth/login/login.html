@@ -1,0 +1,117 @@
+<div ng-controller="LoginController as ctrl" class="utils_pages">
+    <!-- <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 pt-24"> -->
+    <div class="col-xs-12 pt-24">
+        <!--<img class="img-panel" src="assets/img/fundacion/logo1.jpg">-->
+
+        <div class="panel panel-default panel-big-shadow">
+            <div class="row row-flex">
+
+                <div class="col-xs-12 col-md-6">
+                    <div class="div1-login">
+                        <div class="div-left">
+                            <div class="text-center" style="padding:24px 0 24px 0;">
+                                <a href="/">
+                                    <img style="max-height: 130px; margin-top: 3px;" src="assets/img/fundacion/logo_blanco_small.png">
+                                </a>
+                            </div>
+                            <div class="text-center">
+                                <!-- <h2>La Fundación Talita Kum</h2> -->
+                                <h4>¡Hola de nuevo!</h4>
+
+                                <br>
+
+                                <div class="text-center">
+                                    <span>
+                                        Para poder iniciar sesión en el sistema debes formar parte del equipo de colaboradores de La Fundación Talita Kum.
+                                    </span>
+                                    <br>
+                                    <br>
+                                    <span>
+                                        Si ya eres colaborador y no tienes credenciales, por favor, solicítalas con el administrador del sistema para poder tener acceso al mismo.
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                    <div class="panel-body pt-24">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-offset-1 col-md-10">
+                                <main class="auth-main">
+                                    <div class="auth-block text-center">
+                                        <h3>Ingresa aquí tus credenciales...</h3>
+                                        <br>
+                                        <span>Para continuar debes iniciar sesión</span>
+                                        <br>
+                                        <br>
+                                        <!--<a href="reg.html" class="auth-link">New to Blur Admin? Sign up!</a>-->
+                                        <form class="form-horizontal" ng-submit="ctrl.login()">
+
+                                            <div class="form-group ph-16">
+                                                <div class="div-input-icon">
+                                                    <input type="email" autofocus="" class="form-control" placeholder="Correo electrónico" ng-model="ctrl.account.username">
+                                                    <i class="icon-input fa fa-envelope"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group ph-16">
+                                                <div class="div-input-icon">
+                                                    <input type="password" class="form-control" placeholder="Contraseña" ng-model="ctrl.account.password">
+                                                    <i class="icon-input fa fa-lock"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group ph-16">
+                                                <br>
+                                                <button type="submit" class="btn btn-custom btn-default btn-auth" ng-disabled="ctrl.loading">
+                                                    <span class="fa fa-sign-in fa-fw fa-lg"></span>
+                                                    <strong>INGRESAR AHORA</strong>
+                                                </button>
+                                                <!--<a href class="forgot-pass">¿Olvidaste tu contraseña?</a>-->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </main>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--<div class="panel-footer text-center">
+                <span>
+                    <a href>¿Olvidaste tu contraseña?</a>
+                </span>
+            </div>-->
+        </div>
+
+
+
+    </div>
+</div>
+
+<style type="text/css">
+
+    html {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    body {
+        /* color: #333;
+        background-position: center; */
+        background-image: url('assets/img/fundacion/pattern1.png');
+        background-size: 300px;
+        max-width: 1600px;
+    }
+    .div1-login {
+        background: url('assets/img/fundacion/psico1.jpeg') center bottom repeat;
+    }
+    .btn-custom {
+        padding: 8px 24px;
+    }
+
+</style>

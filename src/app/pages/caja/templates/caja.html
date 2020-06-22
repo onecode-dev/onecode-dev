@@ -1,0 +1,180 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="CajaController as ctrl">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="rel">
+                            <!-- <mi-loader></mi-loader> -->
+
+                            <!-- <div class="alert bg-danger animated zoomIn" ng-if="ctrl.caja.estado == ctrl.ESTADOS_CAJA[0].id"> -->
+                            <div style="background-color: #009A40;" class="alert bg-danger animated zoomIn" ng-if="user.id && user.caja_activa">
+                                <h4>LA CAJA SE ENCUENTRA ACTUALMENTE ABIERTA</h4>
+                                <strong>Por lo tanto, no es posible aperturarla nuevamente hasta que cierre la misma.</strong>
+                            </div>
+
+                            <!-- <div class="alert bg-primary animated zoomIn" ng-if="ctrl.caja.estado == ctrl.ESTADOS_CAJA[1].id"> -->
+                            <div class="alert bg-primary animated zoomIn" ng-if="user.id && !user.caja_activa">
+                                <h4>LA CAJA SE ENCUENTRA ACTUALMENTE CERRADA</h4>
+                                <strong>Puede aperturar la caja ahora mismo.</strong>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" style="padding-bottom: 17px">
+                        <button class="btn btn-success" ng-click="ctrl.aperturarCaja()" ng-disabled="ctrl.loading" ng-if="user.id && !user.caja_activa">
+                            <span class="fa fa-fw fa-archive"></span>
+                            <strong>Aperturar caja</strong>
+                        </button>
+                        <button class="btn btn-danger" ng-click="ctrl.reporteMovimientos()" ng-disabled="ctrl.loading">
+                            <span class="mdi mdi-file-document fa-fw"></span>
+                            <strong>Reporte de movimientos de caja</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <form autocomplete="off" ng-submit="ctrl.search()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar por colaborador" ng-model="ctrl.pagination.search" ng-change="ctrl.search()">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <span class="fa fa-fw fa-search"></span>
+                                            <strong>Buscar</strong>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="panel panel-default mb12">
+                            <div class="panel-body">
+                                <div class="input-demo radio-demo row">
+
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.estado" ng-change="ctrl.search()" ng-value="null">
+                                            <span>Todas</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.estado" ng-change="ctrl.search()" ng-value="ctrl.ESTADOS_CAJA[0].id">
+                                            <span>Aperturadas</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.estado" ng-change="ctrl.search()" ng-value="ctrl.ESTADOS_CAJA[1].id">
+                                            <span>Cerradas</span>
+                                        </label>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb16 rel">
+
+                            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                            <div class="panel panel-primary animated zoomIn">
+                                <div class="panel-heading">
+                                    <strong>Listado de aperturas y cierres de caja</strong>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="min-width:220px;">Colaborador(a)</th>
+                                                <th style="min-width:144px;">Fecha de apertura</th>
+                                                <th style="min-width:144px;">Fecha de cierre</th>
+                                                <th class="text-right">Total aperturado</th>
+                                                <th class="text-right">Total de cierre</th>
+                                                <th>Estado</th>
+                                                <th class="text-right">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in ctrl.array">
+                                                <td>{{ item.colaborador.persona.persona || "---" }}</td>
+                                                <td>{{ item.fecha_creacion | date: "dd/MMMM/yyyy hh:mm a" }}</td>
+                                                <td>{{ (item.fecha_cierre | date: "dd/MMMM/yyyy hh:mm a") || "---" }}</td>
+                                                <td class="text-right"><strong>{{ item.total_apertura | currency: "Q " : 2 }}</strong></td>
+                                                <td class="text-right"><strong>{{ (item.total_cierre | currency: "Q " : 2) || "---" }}</strong></td>
+                                                <td>
+                                                    <strong class="text-success" ng-if="item.estado == ctrl.ESTADOS_CAJA[0].id">APERTURADA</strong>
+                                                    <strong class="text-danger" ng-if="item.estado == ctrl.ESTADOS_CAJA[1].id">CERRADA</strong>
+                                                </td>
+                                                <td class="text-right" style="width:180px;">
+                                                    <div class="btn-group">
+                                                        <a href="/api/aperturas_cierres_caja/pdf_estado_cuenta_caja/?id={{ item.id }}" target="_blank" class="btn btn-success" title="Estado de cuenta de caja" ng-if="item.estado == ctrl.ESTADOS_CAJA[1].id">
+                                                            <!-- <strong class="ph2">Q</strong> -->
+                                                            <span class="fa fa-file-text"></span>
+                                                        </a>
+                                                        <a href="/api/aperturas_cierres_caja/pdf_cierre_caja/?id={{ item.id }}" target="_blank" class="btn btn-danger" title="Informe de cierre de caja" ng-if="item.estado == ctrl.ESTADOS_CAJA[1].id">
+                                                            <span class="fa fa-print"></span>
+                                                        </a>
+                                                        <button class="btn btn-primary" title="Cierre de caja" ng-click="ctrl.detallesCierreCaja(item)" ng-if="item.estado == ctrl.ESTADOS_CAJA[1].id || ctrl.loading || item.loadingIngEng">
+                                                            <span class="fa fa-bars"></span>
+                                                        </button>
+                                                        <button class="btn btn-warning" title="Movimientos de caja" ui-sref="movimientos_caja({ id: item.id })">
+                                                            <span class="fa fa-arrow-right"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.pagination.total_items' ng-model='ctrl.pagination.current_page' max-size='ctrl.pagination.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed()">
+                            </div>
+                        </div>
+
+                        <!--<pre>Página {{ ctrl.current_page || "--" }} / {{ ctrl.num_pages || "--" }} </pre>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+                <!--<li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li>-->
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

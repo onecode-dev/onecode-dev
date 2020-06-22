@@ -1,0 +1,171 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="CitasController as ctrl">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" style="padding-bottom: 17px">
+                        <button class="btn btn-success" ng-click="ctrl.create()">
+                            <span class="fa fa-fw fa-plus"></span>
+                            <strong>Reservar cita</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <form autocomplete="off" ng-submit="ctrl.search()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar" ng-model="ctrl.pagination.search" ng-change="ctrl.search()">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <span class="fa fa-fw fa-search"></span>
+                                            <strong>Buscar</strong>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="panel panel-default mb12">
+                            <div class="panel-body">
+                                <div class="input-demo radio-demo row">
+
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.anulada" ng-change="ctrl.search()" ng-value="null">
+                                            <span>Todas</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.anulada" ng-change="ctrl.search()" ng-value="false">
+                                            <span>Activas</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.anulada" ng-change="ctrl.search()" ng-value="true">
+                                            <span>Anuladas</span>
+                                        </label>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb16 rel">
+
+                            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                            <div class="panel panel-primary animated zoomIn">
+                                <!-- <div class="panel-heading">
+                                    <strong>Listado de citas</strong>
+                                </div> -->
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+
+                                            <tr>
+                                                <th style="background-color: #202C3A;" class="text-center text-default2" colspan="3">
+                                                    <span>Colaborador</span>
+                                                </th>
+                                                <th style="background-color: #1D2531;" class="text-center text-default2" colspan="2">
+                                                    <span>Paciente</span>
+                                                </th>
+                                                <th style="background-color: #202C3A;" class="text-center text-default2" colspan="4">
+                                                    <span>Cita</span>
+                                                </th>
+                                            </tr>
+
+                                            <tr>
+                                                <!-- <th>ID</th> -->
+                                                <th style="min-width:220px;">Nombre</th>
+                                                <th>Móvil</th>
+                                                <th>Profesión</th>
+                                                <th style="min-width:220px;">Nombre</th>
+                                                <th>Móvil</th>
+                                                <th style="min-width:144px;">Fecha y hora</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in ctrl.array">
+                                                <!-- <td>{{ item.id }}</td> -->
+                                                <td>{{ item.colaborador.persona.persona }}</td>
+                                                <td>{{ item.colaborador.persona.celular || "---" }}</td>
+                                                <td>{{ item.colaborador.profesion.profesion || "---" }}</td>
+                                                <td>{{ item.paciente.persona.persona }}</td>
+                                                <td>{{ item.paciente.persona.celular || "---" }}</td>
+                                                <td>{{ item.fecha_cita | date: 'dd/MMM/yyyy HH:mm' }}</td>
+                                                <td>
+                                                    <span style="color:#2E7D32;" title="Activa" ng-if="!item.anulada" class="icon-grid fa fa-fw fa-lg fa-check-circle"></span>
+                                                    <span style="color:#FE0000;" title="Anulada" ng-if="item.anulada" class="icon-grid fa fa-fw fa-lg fa-times-circle"></span>
+                                                </td>
+                                                <td style="width:141px;">
+                                                    <div class="btn-group">
+                                                        <!-- <button class="btn btn-success" title="Nueva consulta" ng-disabled="item.anulada" ng-if="ctrl.esMedico && item.colaborador.id == user.id" ui-sref="consultas_create({ id: item.paciente.id })">
+                                                            <span class="fa fa-user-md"></span>
+                                                        </button>
+                                                        <button class="btn btn-info" title="Nuevo caso" ng-disabled="item.anulada" ng-if="ctrl.consultar && item.colaborador.id == user.id" ui-sref="casos_create({ id: item.paciente.id })">
+                                                            <span class="fa fa-file-text"></span>
+                                                        </button> -->
+                                                        <button class="btn btn-primary" title="Detalles" ng-click="ctrl.details(item)">
+                                                            <span class="fa fa-bars"></span>
+                                                        </button>
+                                                        <button ng-if="!item.anulada" class="btn btn-danger" title="Anular" ng-click="ctrl.delete(item)">
+                                                            <span class="fa fa-ban"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.pagination.total_items' ng-model='ctrl.pagination.current_page' max-size='ctrl.pagination.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed()">
+                            </div>
+                        </div>
+
+                        <!--<pre>Página {{ ctrl.current_page || "--" }} / {{ ctrl.num_pages || "--" }} </pre>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+                <!--<li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li>-->
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

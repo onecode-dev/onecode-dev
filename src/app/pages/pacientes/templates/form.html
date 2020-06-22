@@ -1,0 +1,177 @@
+<div class="row mh0 form-group">
+    <div class="col-xs-12">
+        <label>Foto:</label>
+
+        <div class="text-center img-container">
+            <div ng-if="!ctrl.paciente.persona.foto">
+                <span class="fa fa-user-circle-o fa-5x" style="font-size: 100px;"></span>
+            </div>
+
+            <a href ng-if="ctrl.paciente.persona.foto" ng-click="ctrl.viewImg()">
+                <img style="height: 150px; border-radius: 4%;" ngf-src="ctrl.paciente.persona.foto" />
+            </a>
+        </div>
+
+        <div class="text-center">
+            <label class="btn btn-default" for="imageInput" style="cursor: pointer;" ng-show="!ctrl.disabled" >
+                <span class="fa fa-upload fa-fw"></span>
+                <strong>Subir foto</strong>
+            </label>
+            <input id="imageInput" style="opacity: 0; position: absolute; z-index: -1;" class="form-control" filestyle="" type='file' accept="image/*" data-class-button='btn btn-default' data-class-input="form-control" data-button-text="Subir imagen">
+        </div>
+
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Nombre completo:</label><span class="text-danger field-required">*</span>
+        <input ng-disabled="ctrl.disabled" type="text" autofocus="" id="persona" name="persona" ng-model="ctrl.paciente.persona.persona" class="form-control" placeholder="Nombre completo" required="">
+        <span ng-show="ctrl.form.persona.$dirty && ctrl.form.persona.$error.required" class="text-danger">Este campo es requerido.</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Apellido de casada:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="apellido_casada" ng-model="ctrl.paciente.persona.apellido_casada" class="form-control" placeholder="Apellido de casada">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>No. de DPI (CUI):</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="cui" ng-model="ctrl.paciente.persona.cui" class="form-control" ui-mask="9999-99999-9999">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Teléfono:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="telefono" ng-model="ctrl.paciente.persona.telefono" class="form-control" ui-mask="9999-9999">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Móvil:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="celular" ng-model="ctrl.paciente.persona.celular" class="form-control" ui-mask="9999-9999">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Correo electrónico:</label>
+        <input ng-disabled="ctrl.disabled"  type="email" name="email" ng-model="ctrl.paciente.persona.correo" class="form-control" placeholder="mail@ejemplo.com">
+        <span class="text-danger" ng-show="ctrl.form.email.$dirty && ctrl.form.email.$error.email">Debes ingresar un email válido</span>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Nacionalidad:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="nacionalidad" ng-model="ctrl.paciente.persona.nacionalidad" class="form-control" placeholder="Nacionalidad">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Departamento:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="departamento" ng-model="ctrl.paciente.persona.departamento" class="form-control" placeholder="Escribe el departamento" uib-typeahead="departamentos as departamentos.name for departamentos in ctrl.getDepartamentos($viewValue, item) | limitTo : 10" typeahead-min-length="1" typeahead-no-results="noResults">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Dirección:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="direccion" ng-model="ctrl.paciente.persona.direccion" class="form-control" placeholder="Dirección">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Lugar de nacimiento:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="lugar_nacimiento" ng-model="ctrl.paciente.lugar_nacimiento" class="form-control" placeholder="Lugar de nacimiento">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Fecha de nacimiento:</label>
+        <div class="row">
+            <div class="col-xs-3">
+                <select ng-disabled="ctrl.disabled"  class="form-control" name="dias" ng-model="ctrl.nacimiento.dias" ng-options="option.value for option in ctrl.dias track by option.id"></select>
+            </div>
+            <div class="col-xs-5">
+                <select ng-disabled="ctrl.disabled"  class="form-control" name="meses" ng-model="ctrl.nacimiento.meses" ng-options="option.value for option in ctrl.meses track by option.id"></select>
+            </div>
+            <div class="col-xs-4">
+                <select ng-disabled="ctrl.disabled"  class="form-control" name="anios" ng-model="ctrl.nacimiento.anios" ng-options="option.value for option in ctrl.anios track by option.id"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Género:</label>
+
+        <div class="input-demo radio-demo row">
+            <div class="col-md-6">
+                <label class="radio-inline custom-radio nowrap">
+                    <input ng-disabled="ctrl.disabled"  type="radio" ng-model="ctrl.paciente.genero" ng-value="'Femenino'">
+                    <span>Femenino</span>
+                </label>
+            </div>
+            <div class="col-md-6">
+                <label class="radio-inline custom-radio nowrap">
+                    <input ng-disabled="ctrl.disabled"  type="radio" ng-model="ctrl.paciente.genero" ng-value="'Masculino'">
+                    <span>Masculino</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Nombres y edades de los padres:</label>
+        <textarea ng-disabled="ctrl.disabled"  rows="3" type="text" name="nombres_padres" ng-model="ctrl.paciente.nombres_padres" class="form-control" placeholder="Nombres y edades de los padres"></textarea>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Ocupación de los padres:</label>
+        <textarea ng-disabled="ctrl.disabled"  rows="3" type="text" name="ocupacion_padres" ng-model="ctrl.paciente.ocupacion_padres" class="form-control" placeholder="Ocupación de los padres"></textarea>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Información relevante de los padres:</label>
+        <textarea ng-disabled="ctrl.disabled"  rows="3" type="text" name="info_padres" ng-model="ctrl.paciente.info_padres" class="form-control" placeholder="Salud, estado civil, residencia, etc."></textarea>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Número de hermanos:</label>
+        <input ng-disabled="ctrl.disabled"  type="number" min="0" step="1" name="num_hermanos" ng-model="ctrl.paciente.num_hermanos" class="form-control" placeholder="0">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Religión:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="religion" ng-model="ctrl.paciente.religion" class="form-control" placeholder="Escribe la religión" uib-typeahead="religiones as religiones for religiones in ctrl.getReligiones($viewValue, item) | limitTo : 10" typeahead-min-length="1" typeahead-no-results="noResults">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Tipo de sangre:</label>
+        <select ng-disabled="ctrl.disabled"  class="form-control" name="tipo_de_sangre" ng-model="ctrl.paciente.tipo_de_sangre" ng-options="option.value for option in ctrl.tiposDeSangre track by option.value"></select>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Nivel académico:</label>
+        <select ng-disabled="ctrl.disabled"  class="form-control" name="nivel_academico" ng-model="ctrl.paciente.nivel_academico" ng-options="option.value for option in ctrl.grados track by option.value"></select>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Ocupación:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="ocupacion" ng-model="ctrl.paciente.ocupacion" class="form-control" placeholder="Ocupación">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Contacto de referencia:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="contacto_referencia" ng-model="ctrl.paciente.contacto_referencia" class="form-control" placeholder="Contacto de referencia">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+        <label>Teléfono de referencia:</label>
+        <input ng-disabled="ctrl.disabled"  type="text" name="telefono_referencia" ng-model="ctrl.paciente.telefono_referencia" class="form-control" placeholder="Teléfono de referencia">
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <strong>Reservar cita</strong>
+            </div>
+            <div class="panel-body" style="padding: 0;">
+                <wizard indicators-position="top" name="wizard">
+                    <wz-step wz-title="COLABORADOR" wz-order="1">
+
+                        <div class="div-wizard">
+                            <div ng-include="'app/pages/citas/templates/citas.dialog.colaboradores.html'"></div>
+                            <!-- <div class="col-xs-12 text-right">
+                                <button wz-next class="btn btn-primary">
+                                    <strong>Siguiente</strong>
+                                    <span class="fa fa-fw fa-arrow-right"></span>
+                                </button>
+                            </div> -->
+                        </div>
+
+                    </wz-step>
+
+                    <wz-step wz-title="PACIENTE" wz-order="2">
+
+                        <div class="div-wizard col-xs-12">
+                            <uib-tabset active="active">
+                                <uib-tab index="0" heading="Buscar paciente">
+                                    <div class="row" ng-include="'app/pages/citas/templates/citas.dialog.pacientes.html'"></div>
+                                </uib-tab>
+                                <uib-tab ng-click="ctrl.resetPaciente()" index="1" heading="Nuevo paciente">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div ng-include="'app/pages/citas/templates/citas.dialog.pac.form.html'"></div>
+                                            <div class="col-xs-6 text-left mt8">
+                                                <button wz-previous class="btn btn-primary">
+                                                    <span class="fa fa-fw fa-arrow-left"></span>
+                                                    <strong>Volver</strong>
+                                                </button>
+                                            </div>
+                                            <div class="col-xs-6 text-right mt8">
+                                                <button ng-disabled="!ctrl.paciente.persona.persona" wz-next ng-click="ctrl.seleccionarPaciente()" class="btn btn-primary">
+                                                    <strong>Siguiente</strong>
+                                                    <span class="fa fa-fw fa-arrow-right"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </uib-tab>
+                            </uib-tabset>
+                        </div>
+
+                    </wz-step>
+
+                    <wz-step wz-title="FECHA" wz-order="3">
+
+                        <div class="div-wizard">
+                            <div class="col-xs-12">
+                                <div ng-include="'app/pages/citas/templates/citas.dialog.fecha.html'"></div>
+                                <div class="col-xs-6 text-left mb16 mt8">
+                                    <button wz-previous class="btn btn-primary">
+                                        <span class="fa fa-fw fa-arrow-left"></span>
+                                        <strong>Volver</strong>
+                                    </button>
+                                </div>
+                                <div class="col-xs-6 text-right mb16 mt8">
+                                    <button ng-click="ctrl.save()" class="btn btn-primary">
+                                        <span class="fa fa-fw fa-check"></span>
+                                        <strong>Reservar cita</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </wz-step>
+
+                </wizard>
+            </div>
+        </div>
+
+    </div>
+
+</div>

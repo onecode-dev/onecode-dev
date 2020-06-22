@@ -1,0 +1,127 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="UserEditController as ctrl">
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-8">
+
+                        <div class="rel">
+                            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                            <form name="ctrl.form" autocomplete="off" ng-submit="ctrl.save()" novalidate>
+                                 <div class="panel panel-primary animated zoomIn" style="margin-bottom:16px;">
+                                    <div class="panel-heading">
+                                        <strong>Información personal</strong>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div ng-include="'app/pages/users/templates/form.html'"></div>
+
+                                            <div class="row mh0 form-group">
+                                                <div class="col-xs-12 col-sm-12 col-md-6">
+                                                    <label>Correo electrónico:</label>
+                                                    <span class="text-danger field-required">*</span>
+                                                    <input type="email" name="email" ng-model="ctrl.perfil.persona.correo" class="form-control" placeholder="mail@ejemplo.com" required="">
+
+                                                    <span class="text-danger" ng-show="ctrl.form.email.$dirty && ctrl.form.email.$error.email">Debes ingresar un email válido</span>
+                                                    <span ng-show="ctrl.form.email.$dirty && ctrl.form.email.$error.required" class="text-danger">Este campo es requerido.</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer text-center">
+                                        <button class="btn btn-danger" ui-sref="users" type="button">
+                                            <span class="fa fa-fw fa-times-circle"></span>
+                                            <strong>Cancelar</strong>
+                                        </button>
+                                        <button class="btn btn-success" type="submit">
+                                            <span class="fa fa-fw fa-check"></span>
+                                            <strong>Guardar</strong>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <form name="ctrl.form_password" ng-submit="ctrl.restore_password()" novalidate>
+                             <div class="panel panel-primary animated zoomIn m0">
+                                <div class="panel-heading">
+                                    <strong>Restablecer contraseña</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+
+                                        <div class="col-xs-12 form-group mh0">
+                                            <label>Contraseña:</label>
+                                            <span class="text-danger field-required">*</span>
+
+                                            <input type="password" name="password" ng-model="ctrl.perfil.password" class="form-control" placeholder="Contraseña" required="" ng-pattern="/^[a-zA-Z0-9]{8,32}$/" ng-change="ctrl.validate_password()">
+
+                                            <span ng-show="ctrl.form_password.password.$dirty && ctrl.form_password.password.$error.required" class="text-danger">Este campo es requerido.</span>
+                                            <span ng-show="ctrl.form_password.password.$error.pattern" class="text-danger">La contraseña debe contener entre 8 a 32 caracteres.</span>
+
+                                        </div>
+                                        <div class="col-xs-12 form-group mh0">
+                                            <label>Repetir Contraseña:</label>
+                                            <span class="text-danger field-required">*</span>
+
+                                            <input type="password" name="password_confirm" ng-model="ctrl.perfil.password_confirm" class="form-control" placeholder="Repetir contraseña" required="" ng-change="ctrl.validate_password()">
+
+                                            <span ng-show="ctrl.form_password.password_confirm.$dirty && ctrl.form_password.password_confirm.$error.required" class="text-danger">Este campo es requerido.</span>
+                                            <span class="text-danger" ng-show="!ctrl.password_confirm && ctrl.perfil.password_confirm">Las contraseñas no coinciden.</span>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="panel-footer text-center">
+                                    <!--<button class="btn btn-danger" ui-sref="users()" type="button">
+                                        <span class="fa fa-fw fa-times-circle"></span>
+                                        <strong>Cancelar</strong>
+                                    </button>-->
+                                    <button class="btn btn-success" type="submit">
+                                        <span class="fa fa-fw fa-check"></span>
+                                        <strong>Restablecer</strong>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+                <!--<li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li>-->
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

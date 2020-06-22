@@ -1,0 +1,97 @@
+<div class="row mh0 form-group">
+    <div class="col-xs-12">
+        <label>Foto de perfil:</label>
+
+        <div class="text-center img-container">
+            <div ng-if="!ctrl.perfil.persona.foto">
+                <span class="fa fa-user-circle-o fa-5x" style="font-size: 100px;"></span>
+            </div>
+
+            <a href ng-if="ctrl.perfil.persona.foto" ng-click="ctrl.viewImg()">
+                <img style="height: 150px; border-radius: 4%;" ngf-src="ctrl.perfil.persona.foto" />
+            </a>
+        </div>
+
+        <div class="text-center">
+            <label class="btn btn-default" for="imageInput" style="cursor: pointer;">
+                <span class="fa fa-upload fa-fw"></span>
+                <strong>Subir foto</strong>
+            </label>
+            <input id="imageInput" style="opacity: 0; position: absolute; z-index: -1;" class="form-control" filestyle="" type='file' accept="image/*" data-class-button='btn btn-default' data-class-input="form-control" data-button-text="Subir imagen">
+        </div>
+
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Nombre completo:</label><span class="text-danger field-required">*</span>
+        <input type="text" autofocus="" name="persona" ng-model="ctrl.perfil.persona.persona" class="form-control" placeholder="Nombre completo" required="">
+        <span ng-show="ctrl.form.persona.$dirty && ctrl.form.persona.$error.required" class="text-danger">Este campo es requerido.</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Teléfono:</label>
+        <input type="text" name="telefono" ng-model="ctrl.perfil.persona.telefono" class="form-control" ui-mask="9999-9999">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Móvil:</label>
+        <input type="text" name="celular" ng-model="ctrl.perfil.persona.celular" class="form-control" ui-mask="9999-9999">
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Nacionalidad:</label>
+        <input type="text" name="nacionalidad" ng-model="ctrl.perfil.persona.nacionalidad" class="form-control" placeholder="Nacionalidad">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Departamento:</label>
+
+        <input type="text" name="departamento" ng-model="ctrl.departamento" class="form-control" placeholder="Escribe el departamento" uib-typeahead="departamentos as departamentos.name for departamentos in ctrl.getDepartamentos($viewValue, item) | limitTo : 10" typeahead-min-length="1" typeahead-no-results="noResults" value="{{ item.pasajero.id }}">
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>Dirección:</label>
+        <input type="text" name="direccion" ng-model="ctrl.perfil.persona.direccion" class="form-control" placeholder="Dirección">
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+
+        <label>Acceso:</label><span class="text-danger field-required">*</span>
+        <ui-select name="roles" multiple ng-model="ctrl.perfil.roles" search-enabled="true" append-to-body="true" class="form-control" required="">
+            <ui-select-match placeholder="Nivel de acceso">
+                {{ $item.name }}
+            </ui-select-match>
+            <ui-select-choices repeat="item in ctrl.roles | filter: $select.search">
+                {{ item.name }}
+            </ui-select-choices>
+        </ui-select>
+        <span ng-show="ctrl.form.roles.$dirty && ctrl.form.roles.$error.required" class="text-danger">Este campo es requerido.</span>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+
+        <label>Profesión:</label>
+        <input type="text" name="profesion" ng-model="ctrl.perfil.profesion" class="form-control" placeholder="Seleccione la profesión" uib-typeahead="profesiones as profesiones.profesion for profesiones in ctrl.getProfesiones($viewValue, item)" typeahead-min-length="1" typeahead-no-results="noResults" value="{{ item.pasajero.id }}">
+
+    </div>
+
+</div>
+
+<div class="mh0 form-group">
+
+    <div class="col-xs-12 col-sm-12 col-md-6">
+        <label>No. Colegiado:</label>
+        <input type="number" min="0" name="celular" ng-model="ctrl.perfil.colegiado" class="form-control" placeholder="No. Colegiado">
+    </div>
+
+</div>

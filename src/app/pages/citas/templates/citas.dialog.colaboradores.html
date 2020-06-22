@@ -1,0 +1,68 @@
+
+    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7" style="padding-bottom: 17px">
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
+        <form autocomplete="off" ng-submit="ctrl.search()">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar" ng-model="ctrl.pagination.search" ng-change="ctrl.search()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="fa fa-fw fa-search"></span>
+                            <strong>Buscar</strong>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-xs-12">
+
+        <div class="mb16 rel">
+
+            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+            <div class="panel panel-primary">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Móvil</th>
+                                <th>Profesión</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ctrl.colaboradores">
+                                <td>{{ item.persona.persona || "---" }}</td>
+                                <td>{{ item.persona.telefono || "---" }}</td>
+                                <td>{{ item.persona.celular || "---" }}</td>
+                                <td>{{ item.profesion.profesion || "---" }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button wz-next ng-click="ctrl.seleccionarColaborador(item)" class="btn btn-primary" title="Seleccionar">
+                                            <span class="fa fa-check"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.pagination.total_items' ng-model='ctrl.pagination.current_page' max-size='ctrl.pagination.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed()">
+                <!-- num-pages='ctrl.pagination.num_pages' -->
+            </div>
+        </div>
+
+
+        <!--<pre>Página {{ ctrl.current_page || "--" }} / {{ ctrl.num_pages || "--" }} </pre>-->
+
+    </div>
+

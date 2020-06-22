@@ -1,0 +1,73 @@
+<div class="m16">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>
+                    <strong>Detalles del movimiento</strong>
+                </h2>
+            </div>
+
+            <div class="col-xs-12" style="font-size: 16px;">
+
+                <div class="area-info" style="margin-bottom: 12px;">
+                    <div style="margin-bottom: 6px;">
+                        <strong>Cantidad:</strong>
+                    </div>
+                    <div class="mb2 ml8" style="margin-bottom: 6px;">
+                        <strong>{{ (movimiento_caja.cantidad | currency : 'Q ' : 2) || "---" }}</strong>
+                    </div>
+                </div>
+
+                <div class="area-info" style="margin-bottom: 12px;">
+                    <div style="margin-bottom: 6px;">
+                        <strong>Tipo de movimiento:</strong>
+                    </div>
+                    <div class="mb2 ml8" style="margin-bottom: 6px;">
+                        <div class="text-success" ng-if="movimiento_caja.tipo == 10">
+                            <span class="fa fa-fw fa-arrow-up fa-lg"></span>
+                            <strong>INGRESO</strong>
+                        </div>
+                        <div class="text-danger" ng-if="movimiento_caja.tipo == 20">
+                            <span class="fa fa-fw fa-arrow-down fa-lg"></span>
+                            <strong>EGRESO</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-info" style="margin-bottom: 12px;">
+                    <div style="margin-bottom: 6px;">
+                        <strong>Tipo de documento:</strong>
+                    </div>
+                    <div class="mb2 ml8" style="margin-bottom: 6px;">
+                        <div ng-if="movimiento_caja.tipo_documento == 10">
+                            <span>RECIBO</span>
+                        </div>
+                        <div ng-if="movimiento_caja.tipo_documento == 20">
+                            <span>FACTURA</span>
+                        </div>
+                        <div ng-if="!movimiento_caja.tipo_documento">
+                            <span>---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="area-info" style="margin-bottom: 12px;">
+                    <div style="margin-bottom: 6px;">
+                        <strong>No. de documento:</strong>
+                    </div>
+                    <div class="mb2 ml8" style="margin-bottom: 6px;">
+                        <span>{{ movimiento_caja.num_documento || "---" }}</span>
+                    </div>
+                </div>
+
+                <div class="area-info" style="margin-bottom: 12px;">
+                    <div style="margin-bottom: 6px;">
+                        <strong>Concepto:</strong>
+                    </div>
+                    <div class="mb2 ml8" style="margin-bottom: 6px;">
+                        <span>{{ movimiento_caja.concepto || "---" }}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

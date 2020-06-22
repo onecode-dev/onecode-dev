@@ -1,0 +1,28 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12">
+            <form autocomplete="off" name="ctrl.form" novalidate="" ng-submit="ctrl.save()">
+
+
+                <div class="form-group">
+                    <label>Profesión:</label>
+                    <span class="text-danger field-required">*</span>
+                    <input class="form-control" placeholder="Nombre de la profesión" autofocus="" type="text" name="profesion" required="" ng-model="ctrl.profesion.profesion">
+                    <span ng-show="ctrl.form.profesion.$dirty && ctrl.form.profesion.$error.required" class="text-danger">Este campo es requerido.</span>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-danger" type="button" ng-click="closeThisDialog()">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit" ng-click="ctrl.save()">
+                        <span class="fa fa-fw fa-check"></span>
+                        <strong>Guardar</strong>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

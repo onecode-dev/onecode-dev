@@ -1,0 +1,73 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>
+                <strong>Reporte de todos los movimientos caja</strong>
+            </h2>
+        </div>
+
+        <div class="col-xs-12">
+            <form autocomplete="off" name="ctrl.form" novalidate="" ng-submit="ctrl.generate()">
+
+                <div class="row">
+
+                    <div class="col-xs-12">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha inicial:</label>
+                                    <span class="text-danger field-required">*</span>
+
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" uib-datepicker-popup='{{ctrl.format}}' ng-model='ctrl.reporte.desde' is-open='ctrl.openedFechaDesde' datepicker-options='ctrl.dateOptions' close-text='Cerrar' clear-text="Limpiar" current-text="Hoy">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click='ctrl.openFechaDesde($event)'>
+                                                <span class="fa fa-calendar"></span>
+                                            </button>
+                                        </span>
+                                    </p>
+
+                                    <!-- p.input-group(style="margin-bottom:4px;")
+                                    input.form-control(type='text', uib-datepicker-popup='{{ctrl.format}}', ng-model='ctrl.repCaja.desde', is-open='ctrl.openedFechaDesde', datepicker-options='ctrl.dateOptions', ng-required='true', close-text='Cerrar', ng-change="ctrl.onList()", clear-text="Limpiar", current-text="Hoy")
+                                    span.input-group-btn
+                                      button.btn.btn-default(type='button', ng-click='ctrl.openFechaDesde($event)')
+                                        em.fa.fa-calendar -->
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fecha final:</label>
+                                    <span class="text-danger field-required">*</span>
+                                    <p class="input-group">
+                                        <input class="form-control" type="text" uib-datepicker-popup='{{ctrl.format}}' ng-model='ctrl.reporte.hasta' is-open='ctrl.openedFechaHasta' datepicker-options='ctrl.dateOptions' close-text='Cerrar' clear-text="Limpiar" current-text="Hoy">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click='ctrl.openFechaHasta($event)'>
+                                                <span class="fa fa-calendar"></span>
+                                            </button>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="padding-top: 16px;">
+                    <button class="btn btn-danger" type="button" ng-click="closeThisDialog()">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit">
+                        <span class="fa fa-fw fa-check"></span>
+                        <strong>Generar reporte</strong>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

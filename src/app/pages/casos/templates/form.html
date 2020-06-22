@@ -1,0 +1,449 @@
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelMotivoOculto = !ctrl.panelMotivoOculto">
+            <strong>2. Motivo de la consulta</strong>
+            <span title="Contraer" ng-if="!ctrl.panelMotivoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelMotivoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelMotivoOculto">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>a) Con las propias palabras del informante:</label><span class="text-danger field-required">*</span>
+                    <textarea ng-disabled="ctrl.disabled" id="motivo" name="motivo" ng-model="ctrl.caso.motivo" class="form-control" placeholder="Con las propias palabras del informante" required="">
+                    </textarea>
+                    <span ng-show="ctrl.form.motivo.$dirty && ctrl.form.motivo.$error.required" class="text-danger">Este campo es requerido.</span>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelMotivoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelHistoriaActualOculto = !ctrl.panelHistoriaActualOculto">
+            <strong>3. Historia del problema actual</strong>
+            <span title="Contraer" ng-if="!ctrl.panelHistoriaActualOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelHistoriaActualOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelHistoriaActualOculto">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <label>a) Fecha de inicio, duración y evento desencadenante:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="fecha_inicio_duracion_evento" ng-model="ctrl.caso.notas.historia_actual.fecha_inicio_duracion_evento" class="form-control" placeholder="Fecha de inicio, duración y evento desencadenante">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <label>b) Factores Precipitantes (Estresores):</label>
+                    <textarea ng-disabled="ctrl.disabled" name="factores_precipitantes" ng-model="ctrl.caso.notas.historia_actual.factores_precipitantes" class="form-control" placeholder="Factores Precipitantes (Estresores)">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>c) Impacto de la enfermedad en su ambiente familiar y social:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="impacto_enfermedad" ng-model="ctrl.caso.notas.historia_actual.impacto_enfermedad" class="form-control" placeholder="Impacto de la enfermedad en su ambiente familiar y social">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelHistoriaActualOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelHistoriaClinicaOculto = !ctrl.panelHistoriaClinicaOculto">
+            <strong>4. Historia clínica o antecedentes:</strong>
+            <span title="Contraer" ng-if="!ctrl.panelHistoriaClinicaOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelHistoriaClinicaOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelHistoriaClinicaOculto">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body ph0">
+                            <div class="col-xs-12 mb12">
+                                <strong>a) Personales no patológicos:</strong>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Historia prenatal:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="historia_prenatal" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.historia_prenatal" class="form-control" placeholder="Historia prenatal">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Desarrollo psicomotriz:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="desarrollo_psicomotriz" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.desarrollo_psicomotriz" class="form-control" placeholder="Desarrollo psicomotriz">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Desenvolvimiento escolar:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="desenvolvimiento_escolar" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.desenvolvimiento_escolar" class="form-control" placeholder="Desenvolvimiento escolar">
+                                </div>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Adolescencia:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="adolescencia" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.adolescencia" class="form-control" placeholder="Adolescencia">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Historia Psico-Sexual:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="historia_psico_sexual" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.historia_psico_sexual" class="form-control" placeholder="Historia Psico-Sexual">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Adultez:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="vida_social" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.vida_social" class="form-control" placeholder="Amigos, deportes, etc.">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body ph0">
+                            <div class="col-xs-12 mb12">
+                                <strong>b) Personales patológicos:</strong>
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Historia Médica:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="historia_medica" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.historia_medica" class="form-control" placeholder="Diagnóstico, fecha y tratamiento">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Trastornos mentales:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="trastornos_familiares" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.trastornos_familiares" class="form-control" placeholder="Antecedentes">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Otros:</label>
+                                    <input ng-disabled="ctrl.disabled" type="text" name="otros" ng-model="ctrl.paciente.notas_psicologicas.historia_clinica.otros" class="form-control" placeholder="Escriba">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelHistoriaClinicaOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelHistoriaFamiliarOculto = !ctrl.panelHistoriaFamiliarOculto">
+            <strong>5. Historia familiar</strong>
+            <span title="Contraer" ng-if="!ctrl.panelHistoriaFamiliarOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelHistoriaFamiliarOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelHistoriaFamiliarOculto">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <textarea ng-disabled="ctrl.disabled" name="historia_familiar" ng-model="ctrl.paciente.notas_psicologicas.historia_familiar" class="form-control" placeholder="Involucra vida familiar durante la infancia y/o adolescencia. Constitución de la familia; relación conyugal de los padres, situación sociocultural familiar.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelHistoriaFamiliarOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelExamenMentalOculto = !ctrl.panelExamenMentalOculto">
+            <strong>6. Examen mental o evaluación semiológica</strong>
+            <span title="Contraer" ng-if="!ctrl.panelExamenMentalOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelExamenMentalOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelExamenMentalOculto">
+            <div class="row">
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Apariencia:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="apariencia" ng-model="ctrl.caso.notas.examen_mental.apariencia" class="form-control" placeholder="Apariencia">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Actitud:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="actitud" ng-model="ctrl.caso.notas.examen_mental.actitud" class="form-control" placeholder="Cooperación, desconfianza, seducción, hostilidad.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Conducta:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="conducta" ng-model="ctrl.caso.notas.examen_mental.conducta" class="form-control" placeholder="Coordinación, manierismos, gesticulación, agitación.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Lenguaje:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="lenguaje" ng-model="ctrl.caso.notas.examen_mental.lenguaje" class="form-control" placeholder="Monotonía, verborrea, neologismos, volumen.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Curso y contenido del pensamiento:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="curso_contenido_pensamiento" ng-model="ctrl.caso.notas.examen_mental.curso_contenido_pensamiento" class="form-control" placeholder="Bloqueo, desilusiones, obsesiones, compulsiones, producción, continuidad.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Percepción:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="percepcion" ng-model="ctrl.caso.notas.examen_mental.percepcion" class="form-control" placeholder="Alucinaciones, despersonalización, sentido de la realidad.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Humor:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="humor" ng-model="ctrl.caso.notas.examen_mental.humor" class="form-control" placeholder="Feliz, expansivo, eufórico, deprimido, triste, congruente.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Afecto:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="afecto" ng-model="ctrl.caso.notas.examen_mental.afecto" class="form-control" placeholder="Lábil, plano, adecuado, deprimido, triste, congruente.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Inteligencia o información CI:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="inteligencia" ng-model="ctrl.caso.notas.examen_mental.inteligencia" class="form-control" placeholder="Inteligencia o información CI">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Orientación:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="orientacion" ng-model="ctrl.caso.notas.examen_mental.orientacion" class="form-control" placeholder="Tiempo, lugar, persona.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Memoria:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="memoria" ng-model="ctrl.caso.notas.examen_mental.memoria" class="form-control" placeholder="Remota, pasada, reciente.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Control de impulsos:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="control_impulsos" ng-model="ctrl.caso.notas.examen_mental.control_impulsos" class="form-control" placeholder="Control de impulsos.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Capacidad de juicio crítico y toma de decisiones:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="capacidad_juicio_critico" ng-model="ctrl.caso.notas.examen_mental.capacidad_juicio_critico" class="form-control" placeholder="Capacidad de juicio crítico y toma de decisiones.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Capacidad de "Insight":</label>
+                        <textarea ng-disabled="ctrl.disabled" name="capacidad_insight" ng-model="ctrl.caso.notas.examen_mental.capacidad_insight" class="form-control" placeholder="Introvisión.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <label>Confiabilidad:</label>
+                        <textarea ng-disabled="ctrl.disabled" name="confiabilidad" ng-model="ctrl.caso.notas.examen_mental.confiabilidad" class="form-control" placeholder="Confiabilidad.">
+                        </textarea>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelExamenMentalOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelFuentesSecundariasOculto = !ctrl.panelFuentesSecundariasOculto">
+            <strong>7. Fuentes secundarias de información</strong>
+            <span title="Contraer" ng-if="!ctrl.panelFuentesSecundariasOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelFuentesSecundariasOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelFuentesSecundariasOculto">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Informes médicos:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="informes_medicos" ng-model="ctrl.caso.notas.fuentes_secundarias.informes_medicos" class="form-control" placeholder="Informes médicos.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Test psicométricos e informe de resultados:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="test_psicometricos_informe_resultados" ng-model="ctrl.caso.notas.fuentes_secundarias.test_psicometricos_informe_resultados" class="form-control" placeholder="Test psicométricos e informe de resultados.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Test proyectivos interpretación de resultados:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="test_proyectivos_interpretacion_resultados" ng-model="ctrl.caso.notas.fuentes_secundarias.test_proyectivos_interpretacion_resultados" class="form-control" placeholder="Test proyectivos interpretación de resultados.">
+                    </textarea>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelFuentesSecundariasOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelDiscernimientoDiagnosticoOculto = !ctrl.panelDiscernimientoDiagnosticoOculto">
+            <strong>8. Discernimiento para el diagnóstico</strong>
+            <span class="f14 ml8">(Criterios, diagnósticos; semiólogico y psicodinámico)</span>
+            <span title="Contraer" ng-if="!ctrl.panelDiscernimientoDiagnosticoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelDiscernimientoDiagnosticoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelDiscernimientoDiagnosticoOculto">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Criterios para el diagnóstico:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="criterios_diagnostico" ng-model="ctrl.caso.notas.discernimiento_diag.criterios_diagnostico" class="form-control" placeholder="Criterios para el diagnóstico.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Diagnóstico semiológico:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="diagnostico_semiologico" ng-model="ctrl.caso.notas.discernimiento_diag.diagnostico_semiologico" class="form-control" placeholder="Signos, gestos, actitudes.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>Diagnóstico psicodinámico:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="diagnostico_psicodinamico" ng-model="ctrl.caso.notas.discernimiento_diag.diagnostico_psicodinamico" class="form-control" placeholder="Distinguir lo hereditario y lo ambiental.">
+                    </textarea>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelDiscernimientoDiagnosticoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelObjetivoTerapeuticoOculto = !ctrl.panelObjetivoTerapeuticoOculto">
+            <strong>9. Objetivo terapéutico</strong>
+            <span title="Contraer" ng-if="!ctrl.panelObjetivoTerapeuticoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelObjetivoTerapeuticoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelObjetivoTerapeuticoOculto">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>A corto plazo:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="corto_plazo" ng-model="ctrl.caso.notas.objetivo_terapeutico.corto_plazo" class="form-control" placeholder="A corto plazo.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>A mediano plazo:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="mediano_plazo" ng-model="ctrl.caso.notas.objetivo_terapeutico.mediano_plazo" class="form-control" placeholder="A mediano plazo.">
+                    </textarea>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <label>A largo plazo:</label>
+                    <textarea ng-disabled="ctrl.disabled" name="largo_plazo" ng-model="ctrl.caso.notas.objetivo_terapeutico.largo_plazo" class="form-control" placeholder="A largo plazo.">
+                    </textarea>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelObjetivoTerapeuticoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelEvaluacionPronosticaOculto = !ctrl.panelEvaluacionPronosticaOculto">
+            <strong>10. Evaluación pronóstica</strong>
+            <span title="Contraer" ng-if="!ctrl.panelEvaluacionPronosticaOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelEvaluacionPronosticaOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelEvaluacionPronosticaOculto">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <label>Bueno:</label>
+                    <input ng-disabled="ctrl.disabled" type="text" name="bueno" ng-model="ctrl.caso.notas.evaluacion_pronostica.bueno" class="form-control" placeholder="Bueno.">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6">
+                    <label>Reservado:</label>
+                    <input ng-disabled="ctrl.disabled" type="text" name="reservado" ng-model="ctrl.caso.notas.evaluacion_pronostica.reservado" class="form-control" placeholder="Reservado.">
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelEvaluacionPronosticaOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mh0 form-group">
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn" ng-click="ctrl.panelGenogramaOculto = ctrl.showPanel(ctrl.panelGenogramaOculto)">
+            <strong>12. Genograma</strong>
+            <span title="Contraer" ng-if="!ctrl.panelGenogramaOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelGenogramaOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+        <div class="panel-body" ng-if="!ctrl.panelGenogramaOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12">
+                        <div class="text-center img-container">
+                            <div ng-if="!ctrl.genograma">
+                                <span class="fa fa-picture-o fa-5x" style="font-size: 175px;"></span>
+                            </div>
+
+                            <a href ng-if="ctrl.genograma" ng-click="ctrl.viewImg(ctrl.genograma)">
+                                <img style="height: 250px; border-radius: 1%;" ngf-src="ctrl.genograma" />
+                            </a>
+                        </div>
+
+                        <div class="text-center">
+                            <label class="btn btn-default" for="genogramInput" style="cursor: pointer;" ng-show="!ctrl.disabled">
+                                <span class="fa fa-upload fa-fw"></span>
+                                <strong>Subir genograma</strong>
+                            </label>
+                            <input id="genogramInput" style="opacity: 0; position: absolute; z-index: -1;" class="form-control" filestyle="" type='file' accept="image/*" data-class-button='btn btn-default' data-class-input="form-control" data-button-text="Subir imagen">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelGenogramaOculto = ctrl.showPanel(ctrl.panelGenogramaOculto)" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

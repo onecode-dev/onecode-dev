@@ -1,0 +1,131 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <strong>Cita</strong>
+            </div>
+            <div class="panel-body">
+
+                <div class="row mt4">
+                    <div class="col-xs-12">
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Colaborador:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.colaborador.persona.persona || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Profesión:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.colaborador.profesion.profesion || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Movil:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.colaborador.persona.celular || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt4">
+                    <div class="col-xs-12">
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Paciente:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.paciente.persona.persona || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>CUI:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.paciente.persona.cui || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Movil:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.paciente.persona.celular || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt4">
+                    <div class="col-xs-12">
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Fecha:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.fecha_cita | date: 'dd/MMMM/yyyy HH:mm' }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Estado:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <strong style="color:#2E7D32;" ng-if="!ctrl.cita.anulada">Activa</strong>
+                                    <strong style="color:#FE0000;" ng-if="ctrl.cita.anulada">Anulada</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="area-info">
+                                <div class="mb2">
+                                    <strong>Descripción:</strong>
+                                </div>
+
+                                <div class="mb2 ml8">
+                                    <span>{{ ctrl.cita.descripcion || "---" }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

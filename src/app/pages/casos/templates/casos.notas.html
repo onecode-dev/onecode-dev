@@ -1,0 +1,228 @@
+<div>
+    <ba-sidebar></ba-sidebar>
+    <page-top></page-top>
+
+    <div class="al-main">
+        <div class="al-content">
+            <content-top></content-top>
+
+            <!-- BEGIN CUSTOM HTML -->
+            <div ng-controller="CasoNotasController as ctrl">
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <div class="alert bg-primary animated zoomIn" ng-if="ctrl.caso.cerrado">
+                            <h4>EL CASO ESTÁ CERRADO</h4>
+                            <strong>Por lo tanto, las tareas de agregar y editar notas evolutivas se encuentran desactivadas.</strong>
+                        </div>
+
+                        <div class="mb16 rel">
+                            <mi-loader ng-show="ctrl.loading_item"></mi-loader>
+                            <div class="panel panel-primary animated zoomIn">
+                                <div class="panel-heading">
+                                    <strong>Vista previa del caso</strong>
+                                    <span class="rel pl16">
+                                        <button style="position: absolute; top: -3px; padding: 3px 10px;" ng-click="ctrl.gotoCaso()" class="btn btn-success btn-sm" type="button">
+                                            <strong>Ver caso completo</strong>
+                                            <span class="fa fa-fw fa-arrow-right"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+
+                                        <div class="row mh0 form-group">
+                                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                                <div class="area-info">
+                                                    <div class="mb2">
+                                                        <strong>Nombre completo:</strong>
+                                                    </div>
+                                                    <div class="mb6 mt10 ml8">
+                                                        <span>{{ ctrl.caso.paciente.persona.persona || "---" }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                                <div class="area-info">
+                                                    <div class="mb2">
+                                                        <strong>CUI:</strong>
+                                                    </div>
+                                                    <div class="mb6 mt10 ml8">
+                                                        <span>{{ ctrl.caso.paciente.persona.cui || "---" }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-4">
+                                                <div class="area-info">
+                                                    <div class="mb2">
+                                                        <strong>Movil:</strong>
+                                                    </div>
+                                                    <div class="mb6 mt10 ml8">
+                                                        <span>{{ ctrl.caso.paciente.persona.celular || "---" }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mh0 form-group">
+                                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                                <div class="area-info">
+                                                    <div class="mb2">
+                                                        <strong>Motivo de la consulta:</strong>
+                                                    </div>
+                                                    <div class="mb6 mt10 ml8">
+                                                        <span>{{ ctrl.caso.motivo || "---" }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8" style="padding-bottom: 17px">
+                        <button class="btn btn-success" ng-click="ctrl.create()" ng-disabled="!ctrl.caso.id || ctrl.caso.cerrado">
+                            <span class="fa fa-fw fa-plus"></span>
+                            <strong>Nueva nota evolutiva</strong>
+                        </button>
+                        <button class="btn btn-danger" ng-click="ctrl.createCita()" ng-disabled="!ctrl.caso.id || ctrl.caso.cerrado">
+                            <span class="fa fa-fw fa-clock-o"></span>
+                            <strong>Reservar cita</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <form autocomplete="off" ng-submit="ctrl.search()">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar" ng-model="ctrl.pagination.search" ng-change="ctrl.search()">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit">
+                                            <span class="fa fa-fw fa-search"></span>
+                                            <strong>Buscar</strong>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <!-- <div class="panel panel-default mb12">
+                            <div class="panel-body">
+                                <div class="input-demo radio-demo row">
+
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.cerrado" ng-change="ctrl.search()" ng-value="null">
+                                            <span>Todos</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.cerrado" ng-change="ctrl.search()" ng-value="false">
+                                            <span>Abiertos</span>
+                                        </label>
+                                    </span>
+                                    <span style="margin-right: 16px;">
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" ng-model="ctrl.query.cerrado" ng-change="ctrl.search()" ng-value="true">
+                                            <span>Cerrados</span>
+                                        </label>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="mb16 rel">
+
+                            <mi-loader ng-show="ctrl.loading"></mi-loader>
+
+                            <div class="panel panel-primary animated zoomIn">
+                                <div class="panel-heading">
+                                    <strong>Listado de notas evolutivas</strong>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 50px;">No.</th>
+                                                <th style="min-width:175px;">Fecha</th>
+                                                <th>Observaciones</th>
+                                                <th>Notas</th>
+                                                <!-- <th>Estado</th> -->
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in ctrl.array">
+                                                <td>{{ item.num_sesion }}</td>
+                                                <td style="width:175px;">{{ item.fecha_creacion | date: 'dd/MMM/yyyy' }}</td>
+                                                <td>{{ item.observaciones || '---' }}</td>
+                                                <td>{{ item.notas || '---' }}</td>
+                                                <!-- <td>
+                                                    <strong style="color:#2E7D32;" ng-if="!item.anulada">Activa</strong>
+                                                    <strong style="color:#FE0000;" ng-if="item.anulada">Anulada</strong>
+                                                </td> -->
+                                                <td style="width:140px;">
+                                                    <div class="btn-group">
+                                                        <!-- <button class="btn btn-danger" title="Descargar en PDF">
+                                                            <span class="fa fa-download"></span>
+                                                        </button> -->
+                                                        <button class="btn btn-primary" title="Ver detalles" ng-click="ctrl.details(item)">
+                                                            <span class="fa fa-bars"></span>
+                                                        </button>
+                                                        <button class="btn btn-warning" title="Editar nota" ng-disabled="ctrl.caso.cerrado" ng-click="ctrl.edit(item)">
+                                                            <span class="fa fa-pencil"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.pagination.total_items' ng-model='ctrl.pagination.current_page' max-size='ctrl.pagination.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed()">
+                            </div>
+                        </div>
+
+                        <!--<pre>Página {{ ctrl.current_page || "--" }} / {{ ctrl.num_pages || "--" }} </pre>-->
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- END CUSTOM HTML -->
+
+        </div>
+    </div>
+
+    <footer class="al-footer clearfix">
+        <!--<div class="al-footer-right">Created with <i class="ion-heart"></i></div>-->
+        <div class="al-footer-main clearfix">
+            <div class="al-copy">
+                <span style="font-size:14px;">La Fundación Talita Kum</span>
+            </div>
+            <ul class="al-share clearfix">
+                <!--<li><i class="socicon socicon-facebook"></i></li>
+                <li><i class="socicon socicon-twitter"></i></li>
+                <li><i class="socicon socicon-google"></i></li>
+                <li><i class="socicon socicon-github"></i></li>-->
+            </ul>
+        </div>
+    </footer>
+
+    <!--<back-top></back-top>-->
+</div>

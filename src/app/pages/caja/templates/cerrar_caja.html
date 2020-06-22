@@ -1,0 +1,77 @@
+<div class="m16">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>
+                <strong>Cerrar caja</strong>
+            </h2>
+        </div>
+
+        <div class="col-xs-12">
+            <form autocomplete="off" name="ctrl.form" novalidate="" ng-submit="ctrl.save()">
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group" style="margin-bottom: 0px !important;">
+                            <label>Monto inicial:</label>
+                            <br>
+                            <label class="label-input">
+                                <strong>{{ ctrl.apertura_cierre_caja.total_apertura | currency : "Q " : 2 }}</strong>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0px !important;">
+                            <label>Ingresos:</label>
+                            <br>
+                            <label class="label-input">
+                                <strong class="text-success">{{ ctrl.ingresos_egresos.ingresos | currency : "Q " : 2 }}</strong>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0px !important;">
+                            <label>Egresos:</label>
+                            <br>
+                            <label class="label-input">
+                                <strong class="text-danger">{{ (ctrl.ingresos_egresos.egresos * -1) | currency : "Q " : 2 }}</strong>
+                            </label>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0px !important;">
+                            <label>Efectivo (sistema):</label>
+                            <br>
+                            <label class="label-input">
+                                <strong>{{ ctrl.apertura_cierre_caja.total_actual | currency : "Q " : 2 }}</strong>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-8">
+                        <div class="form-group">
+                            <label>Efectivo (Caja):</label>
+                            <span class="text-danger field-required">*</span>
+                            <div class="input-group">
+                                <span class="input-group-addon addon-left input-group-addon-success">Q</span>
+                                <input class="form-control with-success-addon" type="number" placeholder="0.00" autofocus="" step="1" min="0" ng-model="ctrl.total_cierre_form">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Notas:</label>
+                            <textarea style="height: 172px !important;" class="form-control" placeholder="Puedes escribir aquí algunas observaciones" name="notas" ng-model="ctrl.apertura_cierre_caja.notas">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center" style="padding-top: 16px;">
+                    <button class="btn btn-danger" type="button" ng-click="closeThisDialog()">
+                        <span class="fa fa-fw fa-times-circle"></span>
+                        <strong>Cancelar</strong>
+                    </button>
+                    <button class="btn btn-success" type="submit">
+                        <span class="fa fa-fw fa-check"></span>
+                        <strong>Cerrar caja</strong>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

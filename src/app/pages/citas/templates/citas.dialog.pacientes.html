@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-7" style="padding-bottom: 17px">
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-5">
+        <form autocomplete="off" ng-submit="ctrl.searchPac()">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" name="find" class="form-control ng-pristine ng-valid ng-touched" placeholder="Buscar" ng-model="ctrl.paginationPac.search" ng-change="ctrl.searchPac()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="fa fa-fw fa-search"></span>
+                            <strong>Buscar</strong>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-xs-12">
+
+        <div class="rel">
+            <mi-loader ng-show="ctrl.loadingPac"></mi-loader>
+
+            <div class="panel panel-primary">
+
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>CUI</th>
+                                <th>Teléfono</th>
+                                <th>Móvil</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in ctrl.pacientes">
+                                <td>{{ item.persona.persona }}</td>
+                                <td>{{ item.persona.cui }}</td>
+                                <td>{{ item.persona.telefono || "---" }}</td>
+                                <td>{{ item.persona.celular || "---" }}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button wz-next ng-click="ctrl.seleccionarPaciente(item)" class="btn btn-primary" title="Seleccionar">
+                                            <span class="fa fa-check"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="custom-pagination pagination-sm" uib-pagination previous-text="Anterior" next-text="Siguiente" first-text="Primero" last-text="Último" total-items='ctrl.paginationPac.total_items' ng-model='ctrl.paginationPac.current_page' max-size='ctrl.paginationPac.max_size' boundary-links='true' rotate='false' ng-change="ctrl.page_changed_pac()">
+            </div>
+
+        </div>
+
+    </div>
+</div>

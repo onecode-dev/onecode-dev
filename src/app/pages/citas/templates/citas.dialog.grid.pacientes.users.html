@@ -1,0 +1,30 @@
+<div class="row" style="font-size: 14px; margin-top: 24px;">
+
+        <div class="col-md-12">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <strong>Reservar cita</strong>
+                </div>
+                <div class="panel-body" style="padding: 0;">
+
+                    <div class="div-wizard">
+                        <div class="col-xs-12">
+                            <div ng-include="'app/pages/citas/templates/citas.dialog.fecha.html'"></div>
+                            <div class="col-xs-6 text-left mb16 mt8">
+                            </div>
+                            <div class="col-xs-6 text-right mb16 mt8">
+                                <button ng-click="ctrl.save()" class="btn btn-primary">
+                                    <span class="fa fa-fw fa-check"></span>
+                                    <strong>Reservar cita</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>

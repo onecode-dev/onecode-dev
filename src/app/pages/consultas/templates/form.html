@@ -1,0 +1,268 @@
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelMotivoOculto = !ctrl.panelMotivoOculto">
+            <strong>2. Motivo de la consulta</strong>
+            <span title="Contraer" ng-if="!ctrl.panelMotivoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelMotivoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelMotivoOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>a) Con las propias palabras del informante:</label><span class="text-danger field-required">*</span>
+                        <textarea id="motivo" name="motivo" ng-model="ctrl.consulta.motivo" class="form-control" placeholder="Con las propias palabras del informante" required="">
+                        </textarea>
+                        <span ng-show="ctrl.form.motivo.$dirty && ctrl.form.motivo.$error.required" class="text-danger">Este campo es requerido.</span>
+                    </div>
+                </div>
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>b) Historia de la enfermedad actual:</label>
+                        <textarea id="historia" name="historia" ng-model="ctrl.consulta.notas.historia" class="form-control" placeholder="Historia de la enfermedad actual.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelMotivoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelAntecedentesOculto = !ctrl.panelAntecedentesOculto">
+            <strong>3. Antecedentes</strong>
+            <span title="Contraer" ng-if="!ctrl.panelAntecedentesOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelAntecedentesOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelAntecedentesOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Médicos:</label>
+                        <textarea id="medicos" name="medicos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.medicos" class="form-control" placeholder="Antecedentes médicos.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Quirúrgicos:</label>
+                        <textarea id="quirurgicos" name="quirurgicos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.quirurgicos" class="form-control" placeholder="Antecedentes quirúrgicos.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Traumáticos:</label>
+                        <textarea id="traumaticos" name="traumaticos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.traumaticos" class="form-control" placeholder="Antecedentes traumáticos.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Alérgicos:</label>
+                        <textarea id="alergicos" name="alergicos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.alergicos" class="form-control" placeholder="Antecedentes alérgicos.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Vicios y manías:</label>
+                        <textarea id="vicios" name="vicios" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.vicios" class="form-control" placeholder="Vicios y manías.">
+                        </textarea>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <label>Pediátricos:</label>
+                        <textarea id="pediatricos" name="pediatricos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.pediatricos" class="form-control" placeholder="Antecedentes pediátricos.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Familiares:</label>
+                        <textarea id="familiares" name="familiares" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.familiares" class="form-control" placeholder="Antecedentes familiares.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 ">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Antecedentes ginecológicos</strong>
+                        </div>
+                        <div class="panel-body row">
+                            <div class="row mh0 form-group">
+
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>FUR:</label>
+                                    <input type="text" id="fur" name="fur" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.ginecologicos.fur" class="form-control" placeholder="FUR.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Gestas:</label>
+                                    <input type="number" id="gestas" name="gestas" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.ginecologicos.gestas" class="form-control" placeholder="Gestas.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Partos:</label>
+                                    <input type="number" id="partos" name="partos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.ginecologicos.partos" class="form-control" placeholder="Partos.">
+                                    </textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="row mh0 form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>Abortos:</label>
+                                    <input type="number" id="abortos" name="abortos" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.ginecologicos.abortos" class="form-control" placeholder="Abortos.">
+                                    </textarea>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <label>PF:</label>
+                                    <input type="text" id="pf" name="pf" ng-model="ctrl.paciente.notas_medicas.notas.antecedentes.ginecologicos.pf" class="form-control" placeholder="PF.">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelAntecedentesOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelExamenFisicoOculto = !ctrl.panelExamenFisicoOculto">
+            <strong>4. Examen físico</strong>
+            <span title="Contraer" ng-if="!ctrl.panelExamenFisicoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelExamenFisicoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelExamenFisicoOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Examen físico:</label>
+                        <textarea id="examen_fisico" name="examen_fisico" ng-model="ctrl.consulta.notas.examen_fisico" class="form-control" placeholder="Examen físico.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelExamenFisicoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelPlanDiagnosticoOculto = !ctrl.panelPlanDiagnosticoOculto">
+            <strong>5. Plan diagnóstico</strong>
+            <span title="Contraer" ng-if="!ctrl.panelPlanDiagnosticoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelPlanDiagnosticoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelPlanDiagnosticoOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Plan diagnóstico:</label>
+                        <textarea id="plan_diagnostico" name="plan_diagnostico" ng-model="ctrl.consulta.notas.plan_diagnostico" class="form-control" placeholder="Plan diagnóstico.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelPlanDiagnosticoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelImpresionClinicaOculto = !ctrl.panelImpresionClinicaOculto">
+            <strong>6. Impresión clínica</strong>
+            <span title="Contraer" ng-if="!ctrl.panelImpresionClinicaOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelImpresionClinicaOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelImpresionClinicaOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <label>Impresión clínica:</label>
+                        <textarea id="impresion_clinica" name="impresion_clinica" ng-model="ctrl.consulta.notas.impresion_clinica" class="form-control" placeholder="Impresión clínica.">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelImpresionClinicaOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mh0 form-group">
+
+    <div class="panel panel-primary">
+        <div class="panel-heading secondary-btn"  ng-click="ctrl.panelTratamientoOculto = !ctrl.panelTratamientoOculto">
+            <strong>7. Tratamiento</strong>
+            <span title="Contraer" ng-if="!ctrl.panelTratamientoOculto" class="right fa fa-fw fa-lg fa-angle-up"></span>
+            <span title="Expandir" ng-if="ctrl.panelTratamientoOculto" class="right fa fa-fw fa-lg fa-angle-down"></span>
+        </div>
+
+        <div class="panel-body" ng-if="!ctrl.panelTratamientoOculto">
+            <div class="row">
+
+                <div class="row mh0 form-group">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <!-- <label>Tratamiento:</label> -->
+                        <!-- <textarea id="tratamiento" name="tratamiento" ng-model="ctrl.consulta.notas.tratamiento" class="form-control" placeholder="Tratamiento.">
+                        </textarea> -->
+                        <!-- <trix-editor angular-trix class="trix-content" id="tratamiento" name="tratamiento" ng-model="ctrl.consulta.notas.tratamiento" placeholder="Tratamiento.">
+                        </trix-editor> -->
+
+                        <text-angular id="tratamiento" name="tratamiento" ng-model="ctrl.consulta.notas.tratamiento">
+                        </text-angular>
+
+                    </div>
+                </div>
+
+                <div class="col-xs-12 text-center">
+                    <span ng-click="ctrl.panelTratamientoOculto = true" class="secondary-btn fa fa-fw fa-3x fa-angle-up" title="Contraer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
